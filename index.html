@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paballo - My Girl?</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden}
+.page{display:none;min-height:100vh;padding:30px 20px;align-items:center;justify-content:center;flex-direction:column}
+.page.active{display:flex;animation:fadeIn 0.6s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.container{max-width:420px;width:100%;text-align:center}
+.pink{color:#ff4d8d}
+.muted{color:#a0a0a0;font-size:12px;letter-spacing:3px}
+.btn{border:none;padding:14px 32px;border-radius:100px;font-size:12px;letter-spacing:2px;cursor:pointer;transition:transform 0.2s}
+.btn:active{transform:scale(0.96)}
+.btn-pink{background:#ff4d8d;color:white;box-shadow:0 8px 25px rgba(255,77,141,0.35)}
+.btn-outline{background:transparent;border:1px solid #333;color:#fff}
+.dots{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+.dot{width:6px;height:6px;border-radius:50%;background:#222;transition:all 0.3s}
+.dot.active{background:#ff4d8d;width:24px;border-radius:10px}
+.card{background:#151515;border:1px solid #222;border-radius:20px;padding:20px;text-align:left;margin:12px 0}
+.heart-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.heart-btn{aspect-ratio:1;background:#151515;border:1px solid #222;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-size:24px;user-select:none;transition:all 0.2s}
+.heart-btn.collected{background:#ff4d8d;border-color:#ff4d8d;transform:scale(1.05)}
+.letter-box{background:#151515;border-radius:20px;padding:24px;text-align:left;min-height:300px;border:1px solid #222;line-height:1.9;white-space:pre-wrap;font-family:Georgia,serif}
+.progress{height:2px;background:#222;margin:15px 0}
+.progress-bar{height:100%;background:#ff4d8d;width:0%;transition:width 0.1s}
+.view-counter{position:fixed;top:15px;right:15px;font-size:10px;color:#444;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<div class="view-counter" id="viewDisplay">VIEWS: --</div>
+
+<div class="dots">
+  <div class="dot active" id="d1"></div>
+  <div class="dot" id="d2"></div>
+  <div class="dot" id="d3"></div>
+  <div class="dot" id="d4"></div>
+  <div class="dot" id="d5"></div>
+  <div class="dot" id="d6"></div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <div class="container">
+    <p class="muted">A LIL LOVE STORY</p>
+    <div style="font-size:50px;margin:20px 0">🖤💖</div>
+    <h1 style="font-size:54px">Paballo</h1>
+    <p class="muted" style="color:#ff8ab3;margin-top:10px">MY GIRL</p>
+    <p style="margin-top:25px;color:#ccc;line-height:1.7;font-size:15px">
+      You said I should ask you out properly...<br>
+      <span style="color:#ff4d8d">So I made you this, the developer's way!</span><br><br>
+      Before I say anything,<br>let me make you fall again.
+    </p>
+    <button class="btn btn-pink" style="margin-top:30px" onclick="nextPage()">START →</button>
+  </div>
+</div>
+
+<!-- PAGE 2: TIMELINE -->
+<div class="page" id="page2">
+  <div class="container">
+    <p class="muted">OUR STORY</p>
+    <h1 style="font-size:36px;margin:15px 0">How it happened</h1>
+    <div class="card">
+      <p style="font-size:11px;color:#ff8ab3">EST 22 AUGUST</p>
+      <p style="font-weight:600">We started talking</p>
+      <p style="font-size:13px;color:#888;margin-top:6px">That was the day my favorite person entered my chat.</p>
+    </div>
+    <div class="card">
+      <p style="font-size:11px;color:#ff8ab3">SEPTEMBER 15</p>
+      <p style="font-weight:600">We confessed our feelings</p>
+      <p style="font-size:13px;color:#888;margin-top:6px">That night I slept like a baby knowing my crush loved me back...</p>
+    </div>
+    <div class="card" style="border-color:#ff4d8d50;background:#1a1215">
+      <p style="font-size:11px;color:#ff4d8d">SEPTEMBER 18</p>
+      <p style="font-weight:600;color:#ff8ab3">WE MADE IT OFFICIAL 💖</p>
+      <p style="font-size:13px;color:#aaa;margin-top:6px">But you wanted a proper ask. You deserve that. As a dev, I built this just for you...</p>
+    </div>
+    <button class="btn btn-pink" style="margin-top:20px" onclick="nextPage()">WHY YOU? →</button><br>
+    <button class="btn btn-outline" style="margin-top:10px" onclick="prevPage()">← BACK</button>
+  </div>
+</div>
+
+<!-- PAGE 3: LITTLE THINGS -->
+<div class="page" id="page3">
+  <div class="container">
+    <p class="muted">MY BABY GIRL EDITION</p>
+    <h1 style="font-size:36px;margin:15px 0">Little things<br><span class="pink">I noticed</span></h1>
+    <div class="card">
+      <div>Your care for me ♥</div>
+      <div style="color:#888;font-size:13px;margin-top:8px">Fewer words, but genuine and real. I love that about you.</div>
+    </div>
+    <div class="card">
+      <div>Your soft side ♥</div>
+      <div style="color:#888;font-size:13px;margin-top:8px">That smile when you're blushing? I replay it every time I compliment you.</div>
+    </div>
+    <div class="card">
+      <div>Your confidence ♥</div>
+      <div style="color:#888;font-size:13px;margin-top:8px">You know your worth. That's why you're my girl.</div>
+    </div>
+    <button class="btn btn-pink" style="margin-top:20px" onclick="nextPage()">COLLECT MY HEART →</button><br>
+    <button class="btn btn-outline" style="margin-top:10px" onclick="prevPage()">← BACK</button>
+  </div>
+</div>
+
+<!-- PAGE 4: GAME -->
+<div class="page" id="page4">
+  <div class="container">
+    <h1 style="font-size:36px;margin:15px 0">Collect all<br><span class="pink">my hearts</span></h1>
+    <div class="heart-grid">
+      <div class="heart-btn" onclick="collect(this)">💖</div>
+      <div class="heart-btn" onclick="collect(this)">🌸</div>
+      <div class="heart-btn" onclick="collect(this)">✨</div>
+      <div class="heart-btn" onclick="collect(this)">💌</div>
+      <div class="heart-btn" onclick="collect(this)">🎧</div>
+      <div class="heart-btn" onclick="collect(this)">🌙</div>
+    </div>
+    <p id="heartMsg" style="color:#ff8ab3;margin-top:10px"></p>
+    <div id="afterHearts" style="display:none">
+      <button class="btn btn-pink" style="margin-top:15px" onclick="nextPage()">READ MY LETTER →</button>
+    </div>
+    <button class="btn btn-outline" style="margin-top:15px" onclick="prevPage()">← BACK</button>
+  </div>
+</div>
+
+<!-- PAGE 5: LETTER -->
+<div class="page" id="page5">
+  <div class="container">
+    <h1 style="font-size:36px;margin:15px 0">My letter</h1>
+    <div style="display:flex;gap:8px;justify-content:center;margin:15px 0">
+      <button class="btn btn-pink" style="padding:8px 18px;font-size:11px" onclick="startAuto()">AUTO PLAY</button>
+      <button class="btn btn-outline" style="padding:8px 18px;font-size:11px" onclick="manualNext()">TAP TO SCROLL</button>
+    </div>
+    <div class="progress"><div class="progress-bar" id="progress"></div></div>
+    <div class="letter-box" id="typewriter"></div>
+    <button id="toFinal" style="display:none;margin-top:20px" class="btn btn-pink" onclick="nextPage()">OKAY ASK ME NOW →</button>
+  </div>
+</div>
+
+<!-- PAGE 6: PROPOSAL -->
+<div class="page" id="page6">
+  <div class="container">
+    <div style="font-size:60px">💖</div>
+    <h1 style="font-size:50px;margin:15px 0">Paballo</h1>
+    <div style="background:#151515;border:1px solid #222;border-radius:24px;padding:28px 20px;margin-top:25px">
+      <p class="muted">THE PROPER ASK</p>
+      <h1 style="font-size:34px;margin:12px 0">Will you be my girlfriend?</h1>
+      <p style="font-size:13px;color:#888">Officially. Properly. Like you asked.</p>
+      <button class="btn btn-pink" style="margin-top:20px;padding:16px 40px" onclick="sayYes()">YES, 💖</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// --- CONFIGURATION ---
+const YOUR_PHONE_NUMBER = "27792728286"; 
+const UNIQUE_NAMESPACE = "thabiso_paballo_proposal_2026"; // Counts total page views
+
+// --- HIT COUNTER LOGIC ---
+async function trackViews() {
+  try {
+    const res = await fetch(`https://api.counterapi.dev/v1/${UNIQUE_NAMESPACE}/pageviews/up`);
+    const data = await res.json();
+    if (data && data.count) {
+      document.getElementById('viewDisplay').innerText = `VIEWS: ${data.count}`;
+    }
+  } catch (err) {
+    document.getElementById('viewDisplay').style.display = 'none';
+  }
+}
+window.addEventListener('DOMContentLoaded', trackViews);
+
+// --- NAVIGATION LOGIC ---
+let cur = 1;
+let autoInterval = null;
+
+function nextPage() {
+  document.getElementById('page' + cur).classList.remove('active');
+  cur = Math.min(cur + 1, 6);
+  document.getElementById('page' + cur).classList.add('active');
+  updateDots();
+  if (cur === 5 && !autoInterval) startAuto();
+}
+
+function prevPage() {
+  document.getElementById('page' + cur).classList.remove('active');
+  cur = Math.max(cur - 1, 1);
+  document.getElementById('page' + cur).classList.add('active');
+  updateDots();
+}
+
+function updateDots() {
+  for (let i = 1; i <= 6; i++) {
+    document.getElementById('d' + i).classList.toggle('active', i === cur);
+  }
+}
+
+// --- GAME LOGIC ---
+let collected = 0;
+function collect(btn) {
+  if (btn.classList.contains('collected')) return;
+  btn.classList.add('collected');
+  collected++;
+  document.getElementById('heartMsg').innerText = `${collected}/6 hearts collected 💖`;
+  if (collected === 6) {
+    document.getElementById('afterHearts').style.display = 'block';
+  }
+}
+
+// --- TYPEWRITER LOGIC ---
+const fullText = `Paballo,\n\nSince August 22nd, you ruined me in the best way.\n\nOn September 15th, I was so relieved after confessing.\nOn the 18th, when you said yes, I felt like I won.\n\nBut you were right—it felt incomplete. You deserve a proper confession.\n\nYou know that I love you, and you're the best thing that happened to me this year.\n\nSo to make both you and me happy...\n\nPaballo, will you be my girlfriend? Officially. Properly.\n\nYours,\nThabiso`;
+let i = 0;
+
+function typeChar() {
+  if (i < fullText.length) {
+    document.getElementById('typewriter').innerText = fullText.substring(0, i);
+    i++;
+    document.getElementById('progress').style.width = (i / fullText.length * 100) + '%';
+  } else {
+    clearInterval(autoInterval);
+    document.getElementById('typewriter').innerText = fullText;
+    document.getElementById('toFinal').style.display = 'inline-block';
+  }
+}
+
+function startAuto() {
+  if (autoInterval) clearInterval(autoInterval);
+  autoInterval = setInterval(typeChar, 35);
+}
+
+function manualNext() {
+  if (autoInterval) clearInterval(autoInterval);
+  i = Math.min(i + 40, fullText.length);
+  document.getElementById('typewriter').innerText = fullText.substring(0, i);
+  document.getElementById('progress').style.width = (i / fullText.length * 100) + '%';
+  if (i >= fullText.length) {
+    document.getElementById('toFinal').style.display = 'inline-block';
+  }
+}
+
+// --- PROPOSAL ACCEPTANCE LOGIC (WHATSAPP REDIRECT) ---
+function sayYes() {
+  const customMessage = encodeURIComponent("YES! 💖 I loved the website so much Thabiso!");
+  const whatsappUrl = `https://wa.me/${YOUR_PHONE_NUMBER}?text=${customMessage}`;
+
+  // Update website UI
+  document.getElementById('page6').innerHTML = `
+    <div class="container">
+      <div style="font-size:70px">💖</div>
+      <h1 style="font-size:48px;margin:15px 0">She said yes.<br><span style="color:#ff4d8d">Again.</span></h1>
+      <p style="color:#aaa;margin-top:15px">
+        Officially my girlfriend since Sep 18.<br>
+        Properly asked today.<br><br>
+        Opening WhatsApp for you now...
+      </p>
+      <a href="${whatsappUrl}" class="btn btn-pink" style="margin-top:20px;display:inline-block;text-decoration:none">OPEN WHATSAPP NOW 💬</a>
+      <p style="margin-top:30px;color:#ff4d8d;font-size:28px">Thabiso</p>
+    </div>`;
+
+  // Auto-open WhatsApp chat
+  window.location.href = whatsappUrl;
+}
+</script>
+</body>
+  </html>
+  
